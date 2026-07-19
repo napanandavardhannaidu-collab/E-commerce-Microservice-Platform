@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping-service
+  namespace: shopsphere
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shipping-service
+  template:
+    metadata:
+      labels:
+        app: shipping-service
+    spec:
+      containers:
+        - name: shipping-service
+          image: e-commerce-microservice-platform-shipping-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8086
+          envFrom:
+            - configMapRef:
+                name: shipping-config
+            - secretRef:
+                name: shipping-secret

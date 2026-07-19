@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  namespace: shopsphere
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+        - name: notification-service
+          image: e-commerce-microservice-platform-notification-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8087
+          envFrom:
+            - configMapRef:
+                name: notification-config
+            - secretRef:
+                name: notification-secret

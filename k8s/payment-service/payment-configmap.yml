@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-config
+  namespace: shopsphere
+data:
+  MONGODB_HOST: mongodb
+  REDIS_HOST: redis

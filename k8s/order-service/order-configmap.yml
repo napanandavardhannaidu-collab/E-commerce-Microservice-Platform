@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-config
+  namespace: shopsphere
+data:
+  MONGODB_HOST: mongodb
+  REDIS_HOST: redis
+  PRODUCT_SERVICE_URL: http://product-service:8081
+  NOTIFICATION_SERVICE_URL: http://notification-service:8087
